@@ -5,8 +5,7 @@ import Book from './Book'
 class BookShelf extends Component {
   static propTypes = {
     books: PropTypes.array.isRequired,
-    shelfChange: PropTypes.bool.isRequired,
-    notifyShelfChange: PropTypes.func.isRequired
+    changeShelf: PropTypes.func.isRequired
   }
 
   state = { shelfChange: false }
@@ -25,8 +24,7 @@ class BookShelf extends Component {
           <Book
             book={book}
             key={ book.id }
-            shelfChange={this.state.shelfChange}
-            notifyShelfChange={() => this.onShelfChange() }
+            changeShelf={this.props.changeShelf}
           />
         ))}
       </ol>

@@ -20,11 +20,6 @@ class Search extends Component {
     })
   }
 
-  onShelfChange() {
-    this.setState({ shelfChange: true })
-    this.props.notifyShelfChange()
-  }
-
   render() {
     let books = this.state.books
     const { query } = this.state
@@ -45,8 +40,7 @@ class Search extends Component {
                 <Book
                   book={book}
                   key={ book.id }
-                  shelfChange={this.state.shelfChange}
-                  notifyShelfChange={() => this.onShelfChange() }
+                  changeShelf={this.props.changeShelf}
                 />
               ))}
             </ol>

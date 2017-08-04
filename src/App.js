@@ -18,11 +18,17 @@ class BooksApp extends React.Component {
     })
   }
 
-  onShelfChange() {
-    this.setState({ shelfChange: true })
-    console.log("State change in App.js")
-  }
+  changeShelf = (book, shelf) => {
+      BooksAPI.update(book, shelf).then(response => {
+        // ignore the response, update our own state here
+        // first, update the shelf of our book object
+        book.shelf = shelf
 
+        // next, update state by filtering out the old book (if we have it)
+        // and re-adding our updated book object
+        this.setState({ books: this.state.books.filter(b => b.id !== book.id).concat([ book ]) })
+      })
+    }
   render() {
     const { books } = this.state
 
@@ -30,8 +36,7 @@ class BooksApp extends React.Component {
       <div className="app">
         <Route path="/search" render={( { history }) => (
           <Search
-            shelfChange={this.state.shelfChange}
-            notifyShelfChange={() => this.onShelfChange() }
+            changeShelf={this.changeShelf}
           />
         )} />
         <Route exact  path="/" render={() => (
@@ -39,7 +44,8 @@ class BooksApp extends React.Component {
             <div className="list-books-title">
               <h1>MyReads</h1>
             </div>
-            <BookList books={ books } />
+            <BookList books={ books }
+              changeShelf={this.changeShelf}/>
             <div className="open-search">
               <Link to="/search">Search</Link>
             </div>

@@ -5,13 +5,13 @@
 This game was built for the Udacity React Nanodegree Program. The purpose of the project is to demonstrate understanding of the basic structure and operation of a React-based app.
 
 ## How to Load the App
-
+This app was built using [c](https://github.com/facebookincubator/create-react-app)
 
 ## How to Use the App
 
 
 ## Resources:
-* [Create-react-app Documentation](https://github.com/facebookincubator/create-react-app)
+* [create-react-app Documentation](https://github.com/facebookincubator/create-react-app)
 * [React Router Documentation](http://knowbody.github.io/react-router-docs/)
 * [React Training/React Router](https://reacttraining.com/react-router/web/api/BrowserRouter)
 * [React API](https://facebook.github.io/react/docs/react-api.html)
